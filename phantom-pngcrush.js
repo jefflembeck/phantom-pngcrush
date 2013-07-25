@@ -20,7 +20,8 @@ phantom args sent in:
 
   var options = {
     input: phantom.args[0],
-    output: phantom.args[1]
+    outputDir: phantom.args[1],
+    outputFilename: phantom.args[2]
   };
 
   if( !options.input ){
@@ -28,6 +29,8 @@ phantom args sent in:
     phantom.exit();
   }
 
-  crusher.crush( options );
+  crusher.crush( options , function(){
+    phantom.exit();
+  });
 
 }());
